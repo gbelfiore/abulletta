@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import puppeteer from "puppeteer";
-import chromium from "chrome-aws-lambda";
+// import chromium from "chrome-aws-lambda";
 
 export async function GET(req: NextRequest) {
 	const url = req.nextUrl.searchParams.get("url");
@@ -9,7 +9,8 @@ export async function GET(req: NextRequest) {
 		const selector = "tr[data-evndate]";
 		const options = { headless: false };
 
-		const browser = await chromium.puppeteer.launch(options);
+		// const browser = await chromium.puppeteer.launch(options);
+		const browser = await puppeteer.launch(options);
 
 		try {
 			const page = await browser.newPage();
