@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
 					const res_x = odds[1].textContent;
 					const res_2 = odds[2].textContent;
 
-					return { betterid, date, time, teamin, teamout, res_1, res_x, res_2 };
+					return { aaa: 1 };
 				});
 			});
 
