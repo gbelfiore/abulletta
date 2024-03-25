@@ -20,12 +20,12 @@ const Header = ({ title }: IHeaderProps) => {
 				<div className={styles.headerTitle}>{title}</div>
 				<div className="flex-none">
 					<ul className="menu menu-horizontal px-1">
-						<li>
+						{/* <li>
 							<a onClick={() => router.push("/days")}>Giornate</a>
 						</li>
 						<li>
 							<a onClick={() => router.push("/championships")}>Campionati</a>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 
