@@ -1,0 +1,20 @@
+.login {
+	@apply flex flex-col justify-center items-center;
+	@apply w-full h-full;
+}
+
+.login > form {
+	@apply w-[400px];
+	@apply p-5;
+	@apply border-white border-2 rounded-md;
+	@apply bg-primary;
+}
+
+.loginLogo {
+	@apply w-full mb-5;
+	@apply flex flex-row justify-center;
+}
+
+.loginLogo > img {
+	@apply w-[150px];
+}

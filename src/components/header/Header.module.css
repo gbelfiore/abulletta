@@ -1,0 +1,17 @@
+.header {
+	@apply h-[68px];
+}
+
+.headerLogo {
+	@apply h-[50px];
+	@apply mr-4;
+}
+.headerLogo > img {
+	@apply h-full;
+}
+
+.headerTitle {
+	@apply flex-1 uppercase text-center;
+	@apply text-xl;
+	@apply flex flex-row justify-center;
+}

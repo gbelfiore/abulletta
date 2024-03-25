@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+	@apply w-full h-full;
+}
+
+main {
+	@apply w-full h-[calc(100%-68px)];
+	@apply overflow-y-auto;
+	@apply p-2;
+}
