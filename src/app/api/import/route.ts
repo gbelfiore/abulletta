@@ -1,17 +1,23 @@
 import { NextRequest } from "next/server";
 import puppeteer from "puppeteer";
-// import chromium from "chrome-aws-lambda";
+import chromium from "@sparticuz/chromium";
 
 export async function GET(req: NextRequest) {
 	const url = req.nextUrl.searchParams.get("url");
 
 	if (url) {
 		const selector = "tr[data-evndate]";
-		const options = { headless: false };
+		const options = {
+			args: chromium.args,
+			defaultViewport: chromium.defaultViewport,
+			executablePath: await chromium.executablePath(),
+			headless: chromium.headless,
+			// headless: false,
+		};
 
 		// const browser = await chromium.puppeteer.launch(options);
-		const browser = await puppeteer.launch(options);
 
+		const browser = await puppeteer.launch(options);
 		try {
 			const page = await browser.newPage();
 			await page.goto(url);
@@ -35,6 +41,7 @@ export async function GET(req: NextRequest) {
 
 			return new Response(JSON.stringify({ status: "ok", data: recipeNames }), { status: 200 });
 		} catch (error) {
+			console.log(error);
 			return new Response(JSON.stringify({ status: "ko", error: "problem with crawler" }), { status: 400 });
 		} finally {
 			await browser.close();
