@@ -18,11 +18,16 @@ export async function GET(req: NextRequest) {
 		// const browser = await chromium.puppeteer.launch(options);
 
 		const browser = await puppeteer.launch(options);
+		console.log(5);
 		try {
+			console.log(4);
 			const page = await browser.newPage();
 			await page.goto(url);
+			console.log(3);
 			const recipeNames = await page.$$eval(selector, (nodes) => {
+				console.log(1);
 				return nodes.map((node) => {
+					console.log(2);
 					const betterid = node.dataset.evtid;
 					const date = node.dataset.evndate?.split(" ")[0];
 					const time = node.querySelector("td.time")?.textContent;
