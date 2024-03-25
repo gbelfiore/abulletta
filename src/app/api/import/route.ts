@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import chromium from "@sparticuz/chromium";
 
 export async function GET(req: NextRequest) {
@@ -7,6 +7,8 @@ export async function GET(req: NextRequest) {
 
 	if (url) {
 		const selector = "tr[data-evndate]";
+		chromium.setGraphicsMode = false;
+
 		const options = {
 			args: chromium.args,
 			defaultViewport: chromium.defaultViewport,
@@ -18,16 +20,16 @@ export async function GET(req: NextRequest) {
 		// const browser = await chromium.puppeteer.launch(options);
 
 		const browser = await puppeteer.launch(options);
-		console.log(5);
+		console.log(1);
 		try {
-			console.log(4);
+			console.log(2);
 			const page = await browser.newPage();
 			await page.goto(url);
 			console.log(3);
 			const recipeNames = await page.$$eval(selector, (nodes) => {
-				console.log(1);
+				console.log(4);
 				return nodes.map((node) => {
-					console.log(2);
+					console.log(5);
 					const betterid = node.dataset.evtid;
 					const date = node.dataset.evndate?.split(" ")[0];
 					const time = node.querySelector("td.time")?.textContent;
@@ -40,7 +42,7 @@ export async function GET(req: NextRequest) {
 					const res_x = odds[1].textContent;
 					const res_2 = odds[2].textContent;
 
-					return { aaa: 1 };
+					return { betterid, date, time, teamin, teamout, res_1, res_x, res_2 };
 				});
 			});
 
