@@ -1,0 +1,11 @@
+.home {
+	@apply p-20;
+}
+
+.homeConsole {
+	@apply my-[20px];
+	@apply w-full;
+	@apply text-center;
+	@apply flex flex-row justify-center;
+	@apply gap-2;
+}

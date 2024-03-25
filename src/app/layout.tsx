@@ -20,7 +20,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<Login>
-					<Header title="aaa" />
+					<Header title="parse results better" />
 					<main>{children}</main>
 				</Login>
 			</body>
