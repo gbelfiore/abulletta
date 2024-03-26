@@ -49,6 +49,7 @@ const HomePage = () => {
 						className="btn btn-secondary"
 						onClick={() => {
 							if (refTextarea.current?.value) refTextarea.current.value = "";
+							setData([]);
 						}}
 					>
 						Clean
