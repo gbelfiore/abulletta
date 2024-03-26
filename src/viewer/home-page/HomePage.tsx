@@ -15,6 +15,7 @@ const HomePage = () => {
 			var parser = new DOMParser();
 			var doc = parser.parseFromString(refTextarea.current?.value, "text/html");
 			var events = doc.querySelectorAll("tr[data-evndate]");
+			const saveEvents: Array<Object> = [];
 			events.forEach((node: any) => {
 				const betterid = node.dataset.evtid;
 				const date = node.dataset.evndate?.split(" ")[0];
@@ -28,10 +29,9 @@ const HomePage = () => {
 				const res_x = odds[1].textContent;
 				const res_2 = odds[2].textContent;
 
-				setData((state) => {
-					return [...state, { betterid, date, time, teamin, teamout, res_1, res_x, res_2 }];
-				});
+				saveEvents.push({ betterid, date, time, teamin, teamout, res_1, res_x, res_2 });
 			});
+			setData(saveEvents);
 		} else {
 			alert("Aggiungi il codice HTML nella textarea");
 		}
