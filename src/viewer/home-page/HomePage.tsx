@@ -16,7 +16,8 @@ const HomePage = () => {
 
       var doc = parser.parseFromString(refTextarea.current?.value, 'text/html');
 
-      const groupDays = doc.querySelectorAll('div.container.ng-star-inserted');
+      const groupDays = doc.querySelectorAll('div.event-container-wrapper.event-info.ng-star-inserted');
+      const groupResults = doc.querySelectorAll('div.event-container-wrapper.market-column.ng-star-inserted');
 
       let date: string;
       const saveEvents: Array<Object> = [];
@@ -25,16 +26,16 @@ const HomePage = () => {
 
         const time = groupDay.querySelector('div.row--teams_preMatch_box_time.ng-star-inserted')?.textContent;
 
-        const eventName = groupDay
-          .querySelector('div.row--teams_preMatch_box_label.row--teams_preMatch_box_label_pb > div')
-          ?.textContent?.split(' - ');
+        const eventName = groupDay.querySelector('div.row--teams_preMatch_box_label > div')?.innerHTML?.split('<br>');
+
         const teamin = eventName?.[0];
         const teamout = eventName?.[1];
 
-        const results = groupDay.querySelectorAll('div.quota.ng-star-inserted > app-quota-dumb > div > div.item--valore.ng-star-inserted > span');
+        const results = groupResults[betterid].querySelectorAll('div.item--valore.ng-star-inserted > span');
         const res_1 = results[0]?.textContent;
         const res_x = results[1]?.textContent;
         const res_2 = results[2]?.textContent;
+
         if (!(!teamin || !teamout || !res_1 || !res_2 || !res_x)) saveEvents.push({ betterid, date, time, teamin, teamout, res_1, res_x, res_2 });
       });
 
