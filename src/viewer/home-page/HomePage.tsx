@@ -26,7 +26,7 @@ const HomePage = () => {
 
         const time = groupDay.querySelector('div.row--teams_preMatch_box_time.ng-star-inserted')?.textContent;
 
-        const eventName = groupDay.querySelector('div.row--teams_preMatch_box_label > div')?.innerHTML?.split('<br>');
+        const eventName = groupDay.querySelector('div.row--teams_preMatch_label > div')?.innerHTML?.split('<br>');
 
         const teamin = eventName?.[0];
         const teamout = eventName?.[1];
